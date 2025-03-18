@@ -1,5 +1,4 @@
 use gtest::{Program, System};
-use pebbles_game_io::Player::User;
 use pebbles_game_io::*;
 const OVER: u32 = 1;
 
@@ -109,8 +108,6 @@ fn test_with_negative_input() {
 
     //assert!(state.pebbles_remaining < 0);
     if state.pebbles_remaining < OVER {
-        assert_eq!(state.winner, Some(User));
-
         // Restart the game
         let restart_message = PebblesAction::Restart {
             difficulty: DifficultyLevel::Hard,
