@@ -1,6 +1,7 @@
 use gtest::{Program, System};
 use pebbles_game_io::Player::User;
 use pebbles_game_io::*;
+const OVER: u32 = 1;
 
 #[test]
 fn test_with_positive_input() {
@@ -107,7 +108,7 @@ fn test_with_negative_input() {
         .expect("Failed to get the state of the game after user's turn");
 
     //assert!(state.pebbles_remaining < 0);
-    if state.pebbles_remaining < 0 {
+    if state.pebbles_remaining < OVER {
         assert_eq!(state.winner, Some(User));
 
         // Restart the game
@@ -180,7 +181,7 @@ fn test_with_illegal_input() {
         .expect("Failed to get the state of the game after user's turn");
 
     //assert!(state.pebbles_remaining < 0);
-    if state.pebbles_remaining >= 0 {
+    if state.pebbles_remaining >= OVER {
         // Player gives up
         program.send(sender_id, PebblesAction::GiveUp);
         system.run_next_block();
