@@ -1,5 +1,5 @@
 #![no_std]
-
+#![allow(warnings)]
 use gstd::{exec, msg};
 use pebbles_game_io::*;
 
